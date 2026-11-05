@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { gestationalAge, personalizar, startOfDay } from '../lib/storage.js';
 import { CAIXINHAS } from '../data/caixinhas.js';
+import Fruta from './Fruta.jsx';
 
 export default function Semanas({ estado, atualizar }) {
   const { nomes, dum, caixinhasAbertas } = estado;
@@ -46,6 +47,7 @@ export default function Semanas({ estado, atualizar }) {
       {item && (
         <article className="card">
           <p className="eyebrow">Semana {item.semana}</p>
+          <Fruta semana={item.semana} />
           <h2>{personalizar(item.titulo, nomes)}</h2>
           {caixinhasAbertas.includes(item.semana) ? (
             <p>{personalizar(item.mensagem, nomes)}</p>

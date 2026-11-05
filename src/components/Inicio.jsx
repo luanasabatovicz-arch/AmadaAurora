@@ -8,6 +8,7 @@ import {
 } from '../lib/storage.js';
 import { CAIXINHAS } from '../data/caixinhas.js';
 import { DEVOCIONAIS, ORACOES_PAIS } from '../data/devocionais.js';
+import Fruta from './Fruta.jsx';
 
 export default function Inicio({ estado, atualizar }) {
   const { nomes, dum, caixinhasAbertas } = estado;
@@ -47,6 +48,7 @@ export default function Inicio({ estado, atualizar }) {
 
       <article className="card card--semana">
         <span className="chip">Caixinha da semana {semanaAtual}</span>
+        <Fruta semana={semanaAtual} />
         {aberta ? (
           <>
             <h2>{caixinha ? personalizar(caixinha.titulo, nomes) : ''}</h2>

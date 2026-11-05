@@ -249,3 +249,22 @@
   padding: 0;
   min-height: auto;
 }
+
+/* Ilustrações de tamanho da bebê */
+.fruta {
+  margin: var(--space-2) 0 var(--space-3);
+  display: grid;
+  justify-items: center;
+  gap: var(--space-1);
+}
+
+.fruta svg {
+  width: 96px;
+  height: 96px;
+  max-width: 100%;
+}
+
+.fruta figcaption {
+  font-size: var(--text-xs);
+  color: var(--color-text-soft);
+}
