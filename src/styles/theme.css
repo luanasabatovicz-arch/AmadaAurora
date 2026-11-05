@@ -1,0 +1,173 @@
+/* AmadaAurora — tokens visuais
+   Paleta: creme, rosa suave, lilás e dourado. Tom acolhedor, sem excesso. */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap");
+
+:root {
+  /* Cores base */
+  --color-bg: #fbf6f1;          /* creme de fundo */
+  --color-surface: #ffffff;     /* cartões */
+  --color-blush: #f7d6dc;       /* rosa muito suave */
+  --color-rose: #e8a0b0;        /* rosa principal */
+  --color-rose-deep: #b5667c;   /* rosa para botões e destaques */
+  --color-lilac: #d9cce8;       /* lilás de apoio */
+  --color-lilac-deep: #8f7ab0;  /* lilás para títulos secundários */
+  --color-gold: #c9a96e;        /* dourado discreto para detalhes */
+  --color-text: #3b2f35;        /* texto principal */
+  --color-text-soft: #7d6d74;   /* texto secundário */
+  --color-line: #efe4e6;        /* bordas e divisórias */
+
+  /* Tipografia */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.875rem;
+  --text-2xl: 2.5rem;
+
+  /* Espaçamento e forma */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 6px 20px rgba(181, 102, 124, 0.12);
+  --shadow-card: 0 2px 10px rgba(59, 47, 53, 0.06);
+
+  --max-width-app: 420px;       /* largura de celular */
+}
+
+/* Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 var(--space-3);
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--text-2xl); }
+h2 { font-size: var(--text-xl); }
+h3 { font-size: var(--text-lg); }
+
+p {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-soft);
+}
+
+/* Componentes básicos */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5);
+}
+
+.card--week {
+  background: linear-gradient(160deg, var(--color-blush), var(--color-surface) 70%);
+  border-color: transparent;
+  box-shadow: var(--shadow-soft);
+}
+
+.eyebrow {
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-lilac-deep);
+  font-weight: 700;
+}
+
+.verse {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-md);
+  color: var(--color-text);
+  border-left: 3px solid var(--color-gold);
+  padding-left: var(--space-4);
+}
+
+.verse cite {
+  display: block;
+  margin-top: var(--space-2);
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: var(--text-xs);
+  color: var(--color-text-soft);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 var(--space-5);
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--color-rose-deep);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-rose-deep);
+  border: 2px solid var(--color-rose);
+}
+
+.chip {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-lilac);
+  color: var(--color-lilac-deep);
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+
+/* Layout de celular */
+.app {
+  max-width: var(--max-width-app);
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4) var(--space-8);
+  display: grid;
+  gap: var(--space-4);
+}
