@@ -1,0 +1,251 @@
+/* Estilos das telas do app. Cores e fontes vêm de theme.css. */
+
+.shell {
+  min-height: 100dvh;
+  max-width: var(--max-width-app);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 88px; /* espaço para a barra inferior */
+}
+
+.tela {
+  flex: 1;
+  padding: var(--space-5) var(--space-4);
+}
+
+.pagina {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.banner {
+  margin: 0;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-lilac);
+  color: var(--color-lilac-deep);
+  font-size: var(--text-xs);
+  text-align: center;
+}
+
+.banner--alerta {
+  background: #fde2c4;
+  color: #7a4a10;
+}
+
+/* Barra inferior */
+.barra {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width-app);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  padding: var(--space-2) var(--space-1) calc(var(--space-2) + env(safe-area-inset-bottom));
+  z-index: 10;
+}
+
+.barra__item {
+  min-height: 48px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-soft);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.barra__item--ativa {
+  color: var(--color-rose-deep);
+}
+
+/* Progresso */
+.progresso {
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-blush);
+  overflow: hidden;
+}
+
+.progresso__barra {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-rose), var(--color-rose-deep));
+  border-radius: var(--radius-pill);
+}
+
+.pequeno {
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+  margin: 0;
+}
+
+.card--semana {
+  background: linear-gradient(160deg, var(--color-blush), var(--color-surface) 70%);
+}
+
+/* Formulários */
+.campo {
+  display: grid;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: 400;
+  padding: var(--space-3);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  width: 100%;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 1px;
+}
+
+.erro {
+  color: #a0283c;
+  font-size: var(--text-sm);
+}
+
+.link {
+  border: none;
+  background: transparent;
+  color: var(--color-rose-deep);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: var(--space-2);
+  min-height: 44px;
+}
+
+/* Semanas */
+.grade-semanas {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-2);
+}
+
+.semana {
+  aspect-ratio: 1;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.semana--passou {
+  background: var(--color-blush);
+}
+
+.semana--aberta {
+  border-color: var(--color-gold);
+  box-shadow: inset 0 0 0 2px var(--color-gold);
+}
+
+.semana--atual {
+  background: var(--color-rose-deep);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+/* Abas (Registro) */
+.abas {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.aba {
+  flex: 1;
+  min-height: 44px;
+  border: 2px solid var(--color-rose);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-rose-deep);
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.aba--ativa {
+  background: var(--color-rose-deep);
+  border-color: var(--color-rose-deep);
+  color: #ffffff;
+}
+
+/* Galeria e listas */
+.galeria {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.foto {
+  margin: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.foto img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.foto figcaption {
+  padding: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-soft);
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+}
+
+.item p {
+  margin: var(--space-1) 0 0;
+}
+
+.item .link {
+  padding: 0;
+  min-height: auto;
+}

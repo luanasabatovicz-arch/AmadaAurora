@@ -1,0 +1,13 @@
+{
+  "name": "AmadaAurora",
+  "short_name": "AmadaAurora",
+  "description": "Acompanhamento da gravidez e da primeira infância",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf6f1",
+  "theme_color": "#b5667c",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
