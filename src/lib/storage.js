@@ -12,6 +12,8 @@ export const DEFAULT_STATE = {
   fotos: [],
   exames: [],
   caixinhasAbertas: [],
+  // Recados por data (ISO): { enjoo, quilinho, papai, extra }
+  recados: {},
   momentos: [],
   marcos: [],
 };

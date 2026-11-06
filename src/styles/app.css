@@ -62,7 +62,7 @@
   width: 100%;
   max-width: var(--max-width-app);
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   background: var(--color-surface);
   border-top: 1px solid var(--color-line);
   padding: var(--space-2) var(--space-1) calc(var(--space-2) + env(safe-area-inset-bottom));
@@ -357,6 +357,65 @@
 .comparacao--inicio {
   background: var(--color-blush-soft);
   border-color: transparent;
+}
+
+/* Recado da Aurora */
+.check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 44px;
+  font-weight: 700;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.check input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--color-rose-deep);
+}
+
+.recado {
+  display: grid;
+  gap: var(--space-3);
+  background: linear-gradient(160deg, var(--color-blush-soft), var(--color-surface) 70%);
+  border-color: transparent;
+  box-shadow: var(--shadow-soft);
+}
+
+.recado__topo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.recado__topo p {
+  margin: 0;
+}
+
+.recado__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  background: var(--color-surface);
+  border: 2px solid var(--color-gold);
+}
+
+.recado__texto p {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+.recado__assinatura {
+  margin: 0;
+  text-align: right;
+  font-style: italic;
 }
 
 /* Rodapé de avisos (Semanas) */
