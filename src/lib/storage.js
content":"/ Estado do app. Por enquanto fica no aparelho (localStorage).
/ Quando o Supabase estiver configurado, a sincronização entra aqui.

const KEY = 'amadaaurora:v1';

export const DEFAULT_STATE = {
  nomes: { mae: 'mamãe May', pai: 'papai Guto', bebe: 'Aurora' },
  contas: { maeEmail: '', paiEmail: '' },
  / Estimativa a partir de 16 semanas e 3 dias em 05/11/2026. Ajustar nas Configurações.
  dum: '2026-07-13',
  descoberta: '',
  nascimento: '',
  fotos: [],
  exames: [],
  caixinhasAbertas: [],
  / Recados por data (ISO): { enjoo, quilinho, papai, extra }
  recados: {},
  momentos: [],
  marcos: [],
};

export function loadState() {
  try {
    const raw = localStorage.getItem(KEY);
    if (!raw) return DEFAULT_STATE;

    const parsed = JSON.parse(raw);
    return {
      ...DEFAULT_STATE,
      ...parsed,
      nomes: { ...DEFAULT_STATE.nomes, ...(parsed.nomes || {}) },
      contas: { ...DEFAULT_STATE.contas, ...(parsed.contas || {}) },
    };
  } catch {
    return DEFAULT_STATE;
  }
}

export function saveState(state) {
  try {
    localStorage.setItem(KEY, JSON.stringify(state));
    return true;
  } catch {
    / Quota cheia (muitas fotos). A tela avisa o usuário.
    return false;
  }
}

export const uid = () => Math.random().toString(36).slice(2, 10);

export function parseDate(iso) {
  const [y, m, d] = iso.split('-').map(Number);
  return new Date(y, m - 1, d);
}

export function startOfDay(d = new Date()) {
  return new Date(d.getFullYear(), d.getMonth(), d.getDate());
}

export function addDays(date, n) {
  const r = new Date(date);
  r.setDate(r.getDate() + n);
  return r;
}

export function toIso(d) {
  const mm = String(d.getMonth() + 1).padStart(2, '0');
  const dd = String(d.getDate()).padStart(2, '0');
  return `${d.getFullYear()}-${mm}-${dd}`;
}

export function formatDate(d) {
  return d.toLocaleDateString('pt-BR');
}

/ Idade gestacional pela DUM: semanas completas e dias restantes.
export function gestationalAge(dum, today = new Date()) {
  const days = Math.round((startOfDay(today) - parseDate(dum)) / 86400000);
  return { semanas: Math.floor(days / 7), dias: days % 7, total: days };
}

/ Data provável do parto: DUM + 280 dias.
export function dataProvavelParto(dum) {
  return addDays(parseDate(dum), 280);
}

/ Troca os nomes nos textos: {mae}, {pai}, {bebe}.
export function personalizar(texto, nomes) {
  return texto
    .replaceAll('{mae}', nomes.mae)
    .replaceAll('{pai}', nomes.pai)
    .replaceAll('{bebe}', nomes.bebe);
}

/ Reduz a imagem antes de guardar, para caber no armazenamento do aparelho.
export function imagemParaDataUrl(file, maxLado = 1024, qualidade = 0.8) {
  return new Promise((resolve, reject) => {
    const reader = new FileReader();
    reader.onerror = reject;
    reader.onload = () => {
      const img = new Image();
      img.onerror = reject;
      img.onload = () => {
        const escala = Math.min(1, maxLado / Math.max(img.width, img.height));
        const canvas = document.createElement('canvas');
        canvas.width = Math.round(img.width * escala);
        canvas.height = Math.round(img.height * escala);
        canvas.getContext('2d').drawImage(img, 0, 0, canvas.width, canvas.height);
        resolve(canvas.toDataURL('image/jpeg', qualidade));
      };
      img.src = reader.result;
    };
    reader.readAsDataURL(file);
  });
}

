@@ -1,0 +1,66 @@
+export default function Login({ onLogin }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [erro, setErro] = useState('');
+  const [carregando, setCarregando] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setErro('');
+    setCarregando(true);
+
+    try {
+      const { session } = await import('../lib/auth.js').then(({ signInWithEmail }) => signInWithEmail(email, password));
+      onLogin(session || { signedIn: true, email });
+    } catch (error) {
+      setErro(error.message || 'Não foi possível entrar.');
+    } finally {
+      setCarregando(false);
+    }
+  };
+
+  return (
+    <div className="shell">
+      <main className="tela">
+        <section className="pagina">
+          <article className="card">
+            <p className="eyebrow">Acesso</p>
+            <h1>Amada Aurora</h1>
+            <p className="pequeno">Entre com seu e-mail para continuar com a rotina da mamãe e do papai.</p>
+
+            <form onSubmit={handleSubmit}>
+              <label className="campo">
+                E-mail
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="mae@email.com"
+                  autoComplete="email"
+                />
+              </label>
+
+              <label className="campo">
+                Senha
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="********"
+                  autoComplete="current-password"
+                />
+              </label>
+
+              {erro && <p className="erro">{erro}</p>}
+
+              <button className="btn btn--primary" type="submit" disabled={carregando}>
+                {carregando ? 'Entrando...' : 'Entrar'}
+              </button>
+            </form>
+          </article>
+        </section>
+      </main>
+    </div>
+  );
+}
+
