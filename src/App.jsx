@@ -25,16 +25,6 @@ const FUNDO_POR_ABA = {
   ajustes: null,
 };
 
-function estiloFundo(aba) {
-  const src = FUNDO_POR_ABA[aba];
-  if (!src) return undefined;
-  return {
-    backgroundImage: `url("${src}")`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'top center',
-    backgroundSize: '100% auto',
-  };
-}
 
 export default function App() {
   const [estado, setEstado] = useState(loadState);
@@ -63,7 +53,10 @@ export default function App() {
       )}
       {aviso && <p className="banner banner--alerta">{aviso}</p>}
 
-      <main className="tela" style={estiloFundo(aba)}>
+      <main className="tela">
+        {FUNDO_POR_ABA[aba] && (
+          <img className="tela__fundo" src={FUNDO_POR_ABA[aba]} alt="" aria-hidden="true" />
+        )}
         {telas[aba]}
       </main>
 

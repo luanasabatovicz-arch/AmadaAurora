@@ -11,7 +11,27 @@
 
 .tela {
   flex: 1;
+  position: relative;
+  overflow: hidden;
   padding: var(--space-5) var(--space-4);
+}
+
+/* Fundo da tela: ocupa a largura, esmaece no rodapé e não bloqueia toques */
+.tela__fundo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+}
+
+.tela > .pagina {
+  position: relative;
+  z-index: 1;
 }
 
 .pagina {
