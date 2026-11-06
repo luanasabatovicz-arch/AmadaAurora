@@ -13,7 +13,7 @@ const ABAS = [
   { id: 'inicio', rotulo: 'Início' },
   { id: 'semanas', rotulo: 'Semanas' },
   { id: 'registro', rotulo: 'Registro' },
-  { id: 'recado', rotulo: 'Recado' },
+  { id: 'recado', rotulo: 'Recadinho' },
   { id: 'bebe', rotulo: 'Bebê' },
   { id: 'ajustes', rotulo: 'Ajustes' },
 ];

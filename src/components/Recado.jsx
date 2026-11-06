@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { toIso, formatDate, parseDate } from '../lib/storage.js';
+import RecadinhoSemanal from './RecadinhoSemanal.jsx';
 import { AURORA_IMG } from '../data/assets.js';
 import {
   CAMPOS_RECADO,
@@ -38,7 +39,11 @@ export default function Recado({ estado, atualizar }) {
 
   return (
     <section className="pagina">
-      <h1>Recado da Aurora</h1>
+      <h1>Recadinho da Aurora</h1>
+      <p>Escolha a semana, ajuste o texto se quiser e compartilhe com a família.</p>
+      <RecadinhoSemanal estado={estado} />
+
+      <h2 className="secao-titulo">Recado do dia</h2>
       <p>Marque o que aconteceu no dia. A Aurora conta o resto.</p>
 
       <label className="campo">

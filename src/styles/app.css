@@ -418,6 +418,118 @@
   font-style: italic;
 }
 
+/* Recadinho da Aurora (semanal) */
+.secao-titulo {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px dashed var(--color-line);
+}
+
+.recadinho {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.recadinho select {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  padding: var(--space-3);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  width: 100%;
+}
+
+.recadinho-card {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  background: linear-gradient(160deg, var(--color-blush-soft), var(--color-surface) 70%);
+  border-color: transparent;
+  box-shadow: var(--shadow-soft);
+  /* Espaço reservado para a Aurora, sem cobrir textos */
+  padding-bottom: 150px;
+  overflow: hidden;
+}
+
+.recadinho-card__titulo {
+  margin: 0;
+}
+
+.recadinho-card__objeto {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: var(--space-3);
+  align-items: center;
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2);
+}
+
+.recadinho-card__objeto img {
+  width: 120px;
+  height: 110px;
+  object-fit: contain;
+  display: block;
+}
+
+.recadinho-card__objeto p {
+  margin: 0;
+}
+
+.recadinho-card__nome {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.recadinho-card__medida {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.recadinho-card__nota {
+  margin: 0;
+}
+
+.recadinho-card__brincadeira {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-lg);
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+.recadinho-card__novidade {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.recadinho-card__assinatura {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-lilac-deep);
+}
+
+.recadinho-card__aurora {
+  position: absolute;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.recadinho__acoes {
+  display: grid;
+  gap: var(--space-2);
+}
+
 /* Rodapé de avisos (Semanas) */
 .card--avisos {
   background: var(--color-lilac-soft);

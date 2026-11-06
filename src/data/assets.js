@@ -10,6 +10,12 @@ export const AURORA_IMG = {
   alt: 'Aurora, em lettering rosa com flores em tons pastel',
 };
 
+// Aurora espiando com celular lavanda (fundo transparente): apresentadora do recadinho.
+export const AURORA_APRESENTADORA = {
+  src: `${BASE}fundos/aurora-apresentadora.webp`,
+  alt: 'Aurora piscando, segurando um celular lavanda',
+};
+
 // Fundos por tela. Cada um aparece só na tela indicada.
 export const FUNDOS = {
   principal: `${BASE}fundos/moldura-creme.webp`, // início e acompanhamento semanal
