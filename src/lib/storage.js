@@ -4,7 +4,7 @@
 const KEY = 'amadaaurora:v1';
 
 export const DEFAULT_STATE = {
-  nomes: { mae: 'Mayara', pai: 'Guto', bebe: 'Aurora' },
+  nomes: { mae: 'mamãe May', pai: 'papai Guto', bebe: 'Aurora' },
   // Estimativa a partir de 16 semanas e 3 dias em 05/11/2026. Ajustar nas Configurações.
   dum: '2026-07-13',
   descoberta: '',

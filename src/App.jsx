@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { loadState, saveState } from './lib/storage.js';
 import { modoLocal } from './lib/supabase.js';
+import { FUNDOS } from './data/assets.js';
 import Inicio from './components/Inicio.jsx';
 import Semanas from './components/Semanas.jsx';
 import Registro from './components/Registro.jsx';
@@ -14,6 +15,26 @@ const ABAS = [
   { id: 'bebe', rotulo: 'Bebê' },
   { id: 'ajustes', rotulo: 'Ajustes' },
 ];
+
+// Fundo de cada tela. Repete só uma vez, no topo, e continua com a cor-base.
+const FUNDO_POR_ABA = {
+  inicio: FUNDOS.principal,
+  semanas: FUNDOS.principal,
+  registro: FUNDOS.diario,
+  bebe: FUNDOS.celebracao,
+  ajustes: null,
+};
+
+function estiloFundo(aba) {
+  const src = FUNDO_POR_ABA[aba];
+  if (!src) return undefined;
+  return {
+    backgroundImage: `url("${src}")`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'top center',
+    backgroundSize: '100% auto',
+  };
+}
 
 export default function App() {
   const [estado, setEstado] = useState(loadState);
@@ -42,7 +63,9 @@ export default function App() {
       )}
       {aviso && <p className="banner banner--alerta">{aviso}</p>}
 
-      <main className="tela">{telas[aba]}</main>
+      <main className="tela" style={estiloFundo(aba)}>
+        {telas[aba]}
+      </main>
 
       <nav className="barra" aria-label="Navegação principal">
         {ABAS.map((a) => (

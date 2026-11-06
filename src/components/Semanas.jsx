@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { gestationalAge, personalizar, startOfDay } from '../lib/storage.js';
 import { CAIXINHAS } from '../data/caixinhas.js';
-import Fruta from './Fruta.jsx';
+import { AVISOS_COLECAO } from '../data/assets.js';
+import Comparacao from './Comparacao.jsx';
 
 export default function Semanas({ estado, atualizar }) {
   const { nomes, dum, caixinhasAbertas } = estado;
   const atual = gestationalAge(dum, startOfDay()).semanas;
-  const [selecionada, setSelecionada] = useState(null);
+  // Abre na semana atual; depois da semana 40, a tela começa neutra.
+  const [selecionada, setSelecionada] = useState(atual > 40 ? null : Math.max(1, atual));
 
   const abrir = (semana) => {
     if (!caixinhasAbertas.includes(semana)) {
@@ -19,7 +21,7 @@ export default function Semanas({ estado, atualizar }) {
   return (
     <section className="pagina">
       <h1>Semanas</h1>
-      <p>Toque em uma semana para ver a caixinha. Semanas já passadas ficam marcadas.</p>
+      <p>Toque em uma semana para ver a comparação e a caixinha. Semanas já passadas ficam marcadas.</p>
 
       <div className="grade-semanas">
         {CAIXINHAS.map((c) => {
@@ -34,9 +36,11 @@ export default function Semanas({ estado, atualizar }) {
                 passou ? 'semana--passou' : '',
                 estaSemana ? 'semana--atual' : '',
                 aberta ? 'semana--aberta' : '',
+                selecionada === c.semana ? 'semana--selecionada' : '',
               ].join(' ')}
               onClick={() => setSelecionada(c.semana)}
               aria-label={`Semana ${c.semana}${aberta ? ', caixinha aberta' : ''}`}
+              aria-pressed={selecionada === c.semana}
             >
               {c.semana}
             </button>
@@ -44,10 +48,11 @@ export default function Semanas({ estado, atualizar }) {
         })}
       </div>
 
+      <Comparacao semana={selecionada} />
+
       {item && (
         <article className="card">
-          <p className="eyebrow">Semana {item.semana}</p>
-          <Fruta semana={item.semana} />
+          <p className="eyebrow">Caixinha da semana {item.semana}</p>
           <h2>{personalizar(item.titulo, nomes)}</h2>
           {caixinhasAbertas.includes(item.semana) ? (
             <p>{personalizar(item.mensagem, nomes)}</p>
@@ -56,6 +61,13 @@ export default function Semanas({ estado, atualizar }) {
           )}
         </article>
       )}
+
+      <article className="card card--avisos">
+        <p className="eyebrow">Sobre as comparações</p>
+        <ul className="avisos">
+          {AVISOS_COLECAO.map((aviso) => <li key={aviso}>{aviso}</li>)}
+        </ul>
+      </article>
     </section>
   );
 }

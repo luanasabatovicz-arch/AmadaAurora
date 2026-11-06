@@ -1,21 +1,27 @@
 /* AmadaAurora — tokens visuais
-   Paleta: creme, rosa suave, lilás e dourado. Tom acolhedor, sem excesso. */
+   Paleta: creme, rosa suave, lavanda, verde-água e amarelo manteiga.
+   Os tons claros ficam em fundos e destaques; textos e botões usam tons mais escuros para leitura. */
 
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap");
 
 :root {
   /* Cores base */
-  --color-bg: #fbf6f1;          /* creme de fundo */
+  --color-bg: #FFF6E7;          /* creme de fundo */
   --color-surface: #ffffff;     /* cartões */
-  --color-blush: #f7d6dc;       /* rosa muito suave */
-  --color-rose: #e8a0b0;        /* rosa principal */
-  --color-rose-deep: #b5667c;   /* rosa para botões e destaques */
-  --color-lilac: #d9cce8;       /* lilás de apoio */
-  --color-lilac-deep: #8f7ab0;  /* lilás para títulos secundários */
-  --color-gold: #c9a96e;        /* dourado discreto para detalhes */
-  --color-text: #3b2f35;        /* texto principal */
-  --color-text-soft: #7d6d74;   /* texto secundário */
-  --color-line: #efe4e6;        /* bordas e divisórias */
+  --color-blush: #F4B6C7;       /* rosa suave: barras e destaques */
+  --color-blush-soft: #FCE6EC;  /* rosa muito claro: fundos de cartão */
+  --color-rose: #F4B6C7;        /* rosa suave principal */
+  --color-rose-deep: #9E4663;   /* rosa escuro para botões (contraste com branco) */
+  --color-lilac: #C8B9DD;       /* lavanda */
+  --color-lilac-soft: #EEE8F6;  /* lavanda clara: fundos de chip */
+  --color-lilac-deep: #5E4B7E;  /* lavanda escura para textos de apoio */
+  --color-mint: #B6D9D0;        /* verde-água: semanas já passadas */
+  --color-mint-deep: #2F6B5E;   /* verde-água escuro para texto */
+  --color-gold: #F4D782;        /* amarelo manteiga: detalhes */
+  --color-gold-deep: #8A6A12;   /* dourado escuro, para contorno e foco */
+  --color-text: #51464E;        /* texto principal */
+  --color-text-soft: #6B5F67;   /* texto secundário (contraste AA sobre branco) */
+  --color-line: #EADFD6;        /* bordas e divisórias */
 
   /* Tipografia */
   --font-display: "Cormorant Garamond", Georgia, serif;
@@ -42,8 +48,8 @@
   --radius-lg: 24px;
   --radius-pill: 999px;
 
-  --shadow-soft: 0 6px 20px rgba(181, 102, 124, 0.12);
-  --shadow-card: 0 2px 10px rgba(59, 47, 53, 0.06);
+  --shadow-soft: 0 6px 20px rgba(158, 70, 99, 0.12);
+  --shadow-card: 0 2px 10px rgba(81, 70, 78, 0.07);
 
   --max-width-app: 420px;       /* largura de celular */
 }
@@ -95,7 +101,7 @@ p {
 }
 
 .card--week {
-  background: linear-gradient(160deg, var(--color-blush), var(--color-surface) 70%);
+  background: linear-gradient(160deg, var(--color-blush-soft), var(--color-surface) 70%);
   border-color: transparent;
   box-shadow: var(--shadow-soft);
 }
@@ -143,12 +149,12 @@ p {
 }
 
 .btn:focus-visible {
-  outline: 3px solid var(--color-gold);
+  outline: 3px solid var(--color-gold-deep);
   outline-offset: 2px;
 }
 
 .btn--ghost {
-  background: transparent;
+  background: var(--color-surface);
   color: var(--color-rose-deep);
   border: 2px solid var(--color-rose);
 }
@@ -157,7 +163,7 @@ p {
   display: inline-block;
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-pill);
-  background: var(--color-lilac);
+  background: var(--color-lilac-soft);
   color: var(--color-lilac-deep);
   font-size: var(--text-xs);
   font-weight: 700;

@@ -8,7 +8,8 @@ import {
 } from '../lib/storage.js';
 import { CAIXINHAS } from '../data/caixinhas.js';
 import { DEVOCIONAIS, ORACOES_PAIS } from '../data/devocionais.js';
-import Fruta from './Fruta.jsx';
+import { AURORA_IMG } from '../data/assets.js';
+import Comparacao from './Comparacao.jsx';
 
 export default function Inicio({ estado, atualizar }) {
   const { nomes, dum, caixinhasAbertas } = estado;
@@ -27,11 +28,20 @@ export default function Inicio({ estado, atualizar }) {
     if (!aberta) atualizar({ caixinhasAbertas: [...caixinhasAbertas, semanaAtual] });
   };
 
+  const irParaComparacao = () => {
+    document.getElementById('comparacao-semana')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const parto = dataProvavelParto(dum);
   const diasParaParto = Math.round((parto - hoje) / 86400000);
 
   return (
     <section className="pagina">
+      <figure className="aurora">
+        <img src={AURORA_IMG.src} alt={AURORA_IMG.alt} />
+      </figure>
+      <button className="btn btn--ghost" onClick={irParaComparacao}>Ver a semana de hoje</button>
+
       <header>
         <p className="eyebrow">Semana {idade.semanas} · {idade.dias} dias</p>
         <h1>Olá, {nomes.mae} e {nomes.pai}</h1>
@@ -46,9 +56,10 @@ export default function Inicio({ estado, atualizar }) {
         {diasParaParto > 0 ? ` · faltam ${diasParaParto} dias` : ''}
       </p>
 
+      <Comparacao semana={idade.semanas > 40 ? null : idade.semanas} id="comparacao-semana" />
+
       <article className="card card--semana">
         <span className="chip">Caixinha da semana {semanaAtual}</span>
-        <Fruta semana={semanaAtual} />
         {aberta ? (
           <>
             <h2>{caixinha ? personalizar(caixinha.titulo, nomes) : ''}</h2>
