@@ -16,11 +16,11 @@ import Entrar from './components/Entrar.jsx';
 const ABAS = [
   { id: 'inicio', rotulo: 'Início' },
   { id: 'semanas', rotulo: 'Semanas' },
-  { id: 'registro', rotulo: 'Registro' },
+  { id: 'registro', rotulo: 'Diário' },
   { id: 'recado', rotulo: 'Recadinho' },
   { id: 'missoes', rotulo: 'Missões' },
   { id: 'balada', rotulo: 'Balada' },
-  { id: 'bebe', rotulo: 'Bebê' },
+  { id: 'bebe', rotulo: 'Quartel' },
   { id: 'ajustes', rotulo: 'Ajustes' },
 ];
 

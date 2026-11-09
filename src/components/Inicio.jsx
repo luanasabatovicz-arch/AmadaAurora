@@ -9,6 +9,9 @@ import {
 import { CAIXINHAS } from '../data/caixinhas.js';
 import { DEVOCIONAIS, ORACOES_PAIS } from '../data/devocionais.js';
 import { AURORA_POLICIAL } from '../data/assets.js';
+import { CODIGOS_Q } from '../data/codigosQ.js';
+import { ARMADURA, MARCOS_SEMANA } from '../data/armadura.js';
+import { IconeCarrinhoViatura } from './Insignias.jsx';
 import Comparacao from './Comparacao.jsx';
 import MissaoDoDia from './MissaoDoDia.jsx';
 
@@ -24,6 +27,9 @@ export default function Inicio({ estado, atualizar }) {
   const diaDoAno = Math.floor((hoje - new Date(hoje.getFullYear(), 0, 0)) / 86400000);
   const devocional = DEVOCIONAIS[diaDoAno % DEVOCIONAIS.length];
   const oracao = ORACOES_PAIS[diaDoAno % ORACOES_PAIS.length];
+  const codigoQ = CODIGOS_Q[diaDoAno % CODIGOS_Q.length];
+  const pecaArmadura = ARMADURA[diaDoAno % ARMADURA.length];
+  const marco = MARCOS_SEMANA.includes(semanaAtual);
 
   const abrirCaixinha = () => {
     if (!aberta) atualizar({ caixinhasAbertas: [...caixinhasAbertas, semanaAtual] });
@@ -49,6 +55,12 @@ export default function Inicio({ estado, atualizar }) {
         <p>{nomes.bebe} está crescendo a cada dia.</p>
       </header>
 
+      <article className="card codigo-q">
+        <p className="eyebrow">Código Q do dia</p>
+        <p><strong>{codigoQ.codigo}</strong> · {codigoQ.significado}</p>
+        <p>{personalizar(codigoQ.mensagem, nomes)}</p>
+      </article>
+
       <div className="progresso" role="img" aria-label={`${idade.semanas} de 40 semanas`}>
         <div className="progresso__barra" style={{ width: `${Math.min(100, (idade.semanas / 40) * 100)}%` }} />
       </div>
@@ -61,6 +73,12 @@ export default function Inicio({ estado, atualizar }) {
 
       <article className="card card--semana">
         <span className="chip">Caixinha da semana {semanaAtual}</span>
+        {marco && (
+          <div className="marco">
+            <IconeCarrinhoViatura tamanho={44} />
+            <span className="pequeno">Marco da gestação nesta semana</span>
+          </div>
+        )}
         {aberta ? (
           <>
             <h2>{caixinha ? personalizar(caixinha.titulo, nomes) : ''}</h2>
@@ -76,6 +94,13 @@ export default function Inicio({ estado, atualizar }) {
       </article>
 
       <MissaoDoDia estado={estado} atualizar={atualizar} />
+
+      <article className="card">
+        <p className="eyebrow">Armadura de Deus · peça de hoje</p>
+        <h2>{pecaArmadura.peca}</h2>
+        <p className="pequeno">Leiam {pecaArmadura.referencia} na Bíblia.</p>
+        <p>{pecaArmadura.reflexao}</p>
+      </article>
 
       <article className="card">
         <p className="eyebrow">Devocional do dia</p>

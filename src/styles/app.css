@@ -309,6 +309,69 @@
   border-radius: var(--radius-lg, 20px);
 }
 
+/* Código Q do dia (Início) */
+.codigo-q {
+  display: grid;
+  gap: var(--space-2);
+}
+
+/* Marco da gestação, com o carrinho-viatura (Início) */
+.marco {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-2) 0;
+}
+
+/* Carteira, patente e medalhas (aba Missões) */
+.carteira {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.carteira__topo,
+.patente {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.carteira__topo img {
+  width: 96px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.carteira__topo h2 {
+  margin: 0;
+}
+
+.patente > div {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.medalhas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.medalha {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-1);
+}
+
+.medalha strong {
+  font-size: 0.85rem;
+}
+
+.medalha--bloqueada {
+  opacity: 0.55;
+}
+
 /* Missão de hoje (Início e aba Missões) */
 .missao__corpo {
   display: flex;

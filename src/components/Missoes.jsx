@@ -1,5 +1,8 @@
-import { personalizar, formatDate, parseDate, toIso, startOfDay } from '../lib/storage.js';
+import { personalizar, formatDate, parseDate, toIso, startOfDay, dataProvavelParto } from '../lib/storage.js';
 import { CATEGORIAS_MISSAO, MISSOES } from '../data/missoes.js';
+import { patenteAtual, proximaPatente } from '../data/patentes.js';
+import { MEDALHAS } from '../data/medalhas.js';
+import { IconePatente, IconeMedalha } from './Insignias.jsx';
 import { AURORA_POLICIAL } from '../data/assets.js';
 import MissaoDoDia from './MissaoDoDia.jsx';
 
@@ -10,6 +13,13 @@ export default function Missoes({ estado, atualizar }) {
   const vezesFeita = (id) => cumpridas.filter((r) => r.id === id).length;
   const porId = Object.fromEntries(MISSOES.map((m) => [m.id, m]));
   const recentes = [...cumpridas].reverse().slice(0, 8);
+
+  const patente = patenteAtual(cumpridas.length);
+  const proxima = proximaPatente(cumpridas.length);
+  const progressoPatente = proxima
+    ? Math.round(((cumpridas.length - patente.minimo) / (proxima.minimo - patente.minimo)) * 100)
+    : 100;
+  const medalhas = MEDALHAS.map((m) => ({ ...m, conquistada: m.conquistada(estado) }));
 
   const cumprirMissao = (id) => {
     atualizar({ missoesCumpridas: [...cumpridas, { id, data: toIso(startOfDay()) }] });
@@ -25,6 +35,47 @@ export default function Missoes({ estado, atualizar }) {
       <p>Cada missão cumprida conta. Escolham juntos e marquem quando fizerem.</p>
 
       <MissaoDoDia estado={estado} atualizar={atualizar} />
+
+      <article className="card carteira">
+        <div className="carteira__topo">
+          <img src={AURORA_POLICIAL.retrato.src} alt="" aria-hidden="true" />
+          <div>
+            <p className="eyebrow">Carteira da comandante</p>
+            <h2>{nomes.bebe}</h2>
+            <p className="pequeno">Código CC-0001 · Previsão de chegada: {formatDate(dataProvavelParto(estado.dum))}</p>
+          </div>
+        </div>
+        <div className="patente">
+          <IconePatente nivel={patente.nivel} />
+          <div>
+            <p className="eyebrow">Patente atual</p>
+            <p><strong>{patente.nome}</strong></p>
+            {proxima ? (
+              <>
+                <p className="pequeno">Faltam {proxima.minimo - cumpridas.length} missões para ser {proxima.nome}.</p>
+                <div className="progresso" role="img" aria-label={`${cumpridas.length} de ${proxima.minimo} missões`}>
+                  <div className="progresso__barra" style={{ width: `${progressoPatente}%` }} />
+                </div>
+              </>
+            ) : (
+              <p className="pequeno">Patente máxima. Parabéns, comandante!</p>
+            )}
+          </div>
+        </div>
+      </article>
+
+      <article className="card">
+        <p className="eyebrow">Medalhas</p>
+        <div className="medalhas">
+          {medalhas.map((m) => (
+            <div key={m.id} className={`medalha ${m.conquistada ? '' : 'medalha--bloqueada'}`}>
+              <IconeMedalha tipo={m.id} conquistada={m.conquistada} />
+              <strong>{m.nome}</strong>
+              <span className="pequeno">{m.descricao}</span>
+            </div>
+          ))}
+        </div>
+      </article>
 
       <article className="card">
         <p className="eyebrow">Total de missões cumpridas</p>
