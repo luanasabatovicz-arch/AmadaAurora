@@ -5,13 +5,12 @@ import {
   formatDate,
   personalizar,
   startOfDay,
-  toIso,
 } from '../lib/storage.js';
 import { CAIXINHAS } from '../data/caixinhas.js';
 import { DEVOCIONAIS, ORACOES_PAIS } from '../data/devocionais.js';
-import { MISSOES } from '../data/missoes.js';
 import { AURORA_POLICIAL } from '../data/assets.js';
 import Comparacao from './Comparacao.jsx';
+import MissaoDoDia from './MissaoDoDia.jsx';
 
 export default function Inicio({ estado, atualizar }) {
   const { nomes, dum, caixinhasAbertas } = estado;
@@ -25,16 +24,6 @@ export default function Inicio({ estado, atualizar }) {
   const diaDoAno = Math.floor((hoje - new Date(hoje.getFullYear(), 0, 0)) / 86400000);
   const devocional = DEVOCIONAIS[diaDoAno % DEVOCIONAIS.length];
   const oracao = ORACOES_PAIS[diaDoAno % ORACOES_PAIS.length];
-
-  // Missão do dia: uma por dia, marcada como cumprida na data de hoje.
-  const missao = MISSOES[diaDoAno % MISSOES.length];
-  const hojeIso = toIso(hoje);
-  const missaoCumprida = Boolean(estado.missoesFeitas?.[hojeIso]);
-  const totalCumpridas = Object.keys(estado.missoesFeitas ?? {}).length;
-  const cumprirMissao = () => {
-    atualizar({ missoesFeitas: { ...(estado.missoesFeitas ?? {}), [hojeIso]: true } });
-  };
-  const imagemMissao = missaoCumprida ? AURORA_POLICIAL.celebracao : AURORA_POLICIAL.comando;
 
   const abrirCaixinha = () => {
     if (!aberta) atualizar({ caixinhasAbertas: [...caixinhasAbertas, semanaAtual] });
@@ -86,21 +75,7 @@ export default function Inicio({ estado, atualizar }) {
         )}
       </article>
 
-      <article className="card missao">
-        <p className="eyebrow">Missão da comandante</p>
-        <div className="missao__corpo">
-          <img src={imagemMissao.src} alt={imagemMissao.alt} />
-          <div>
-            <p><strong>{personalizar(missao, nomes)}</strong></p>
-            {missaoCumprida ? (
-              <p className="pequeno">Missão cumprida! Ótimo trabalho, comandante.</p>
-            ) : (
-              <button className="btn" onClick={cumprirMissao}>Missão cumprida</button>
-            )}
-            <p className="pequeno">Missões cumpridas até agora: {totalCumpridas}</p>
-          </div>
-        </div>
-      </article>
+      <MissaoDoDia estado={estado} atualizar={atualizar} />
 
       <article className="card">
         <p className="eyebrow">Devocional do dia</p>

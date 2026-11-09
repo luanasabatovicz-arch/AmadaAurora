@@ -8,6 +8,7 @@ import Semanas from './components/Semanas.jsx';
 import Registro from './components/Registro.jsx';
 import Bebe from './components/Bebe.jsx';
 import Recado from './components/Recado.jsx';
+import Missoes from './components/Missoes.jsx';
 import Balada from './components/Balada.jsx';
 import Ajustes from './components/Ajustes.jsx';
 import Entrar from './components/Entrar.jsx';
@@ -17,6 +18,7 @@ const ABAS = [
   { id: 'semanas', rotulo: 'Semanas' },
   { id: 'registro', rotulo: 'Registro' },
   { id: 'recado', rotulo: 'Recadinho' },
+  { id: 'missoes', rotulo: 'Missões' },
   { id: 'balada', rotulo: 'Balada' },
   { id: 'bebe', rotulo: 'Bebê' },
   { id: 'ajustes', rotulo: 'Ajustes' },
@@ -28,6 +30,7 @@ const FUNDO_POR_ABA = {
   semanas: FUNDOS.principal,
   registro: FUNDOS.diario,
   recado: FUNDOS.principal,
+  missoes: FUNDOS.principal,
   balada: FUNDOS.memorias,
   bebe: FUNDOS.celebracao,
   ajustes: null,
@@ -158,6 +161,7 @@ export default function App() {
     semanas: <Semanas estado={estado} atualizar={atualizar} />,
     registro: <Registro estado={estado} atualizar={atualizar} />,
     recado: <Recado estado={estado} atualizar={atualizar} />,
+    missoes: <Missoes estado={estado} atualizar={atualizar} />,
     balada: <Balada estado={estado} />,
     bebe: <Bebe estado={estado} atualizar={atualizar} />,
     ajustes: <Ajustes estado={estado} atualizar={atualizar} conta={conta} />,

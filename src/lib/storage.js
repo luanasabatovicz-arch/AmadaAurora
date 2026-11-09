@@ -16,8 +16,8 @@ export const DEFAULT_STATE = {
   recados: {},
   momentos: [],
   marcos: [],
-  // Missões cumpridas por data (ISO): { '2026-11-09': true }
-  missoesFeitas: {},
+  // Missões cumpridas: [{ id, data (ISO) }]. Cada vez que uma missão é cumprida, entra um item.
+  missoesCumpridas: [],
 };
 
 export function loadState() {
