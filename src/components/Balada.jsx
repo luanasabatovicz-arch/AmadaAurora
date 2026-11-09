@@ -1,12 +1,8 @@
 // Balada da Aurora: músicas criadas para a bebê, tocadas direto no app.
 // Os arquivos ficam em public/musicas/ e são servidos pelo próprio site.
 
-const MUSICAS = [
-  { arquivo: 'a-luz-do-agora.mp3', titulo: 'A Luz do Agora' },
-  { arquivo: 'dorme-aurora.mp3', titulo: 'Dorme, Aurora' },
-  { arquivo: 'dorme-em-paz-aurora.mp3', titulo: 'Dorme em paz, Aurora' },
-  { arquivo: 'manha-de-aurora.mp3', titulo: 'Manhã de Aurora' },
-];
+// Coletânea nova: adicione aqui cada música {arquivo, titulo}, com o arquivo em public/musicas/.
+const MUSICAS = [];
 
 export default function Balada({ estado }) {
   const { nomes } = estado;
@@ -16,6 +12,12 @@ export default function Balada({ estado }) {
     <section className="pagina">
       <h1>Balada da Aurora</h1>
       <p>Músicas feitas com carinho para a {nomes.bebe}. Toque em ouvir quando quiser.</p>
+
+      {MUSICAS.length === 0 && (
+        <article className="card">
+          <p>As músicas da nova coletânea vão aparecer aqui em breve.</p>
+        </article>
+      )}
 
       {MUSICAS.map((m) => (
         <article key={m.arquivo} className="card">
