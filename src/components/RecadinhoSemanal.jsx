@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { gestationalAge, startOfDay } from '../lib/storage.js';
-import { COMPARACOES, NOTA_COMPARACAO, FUNDOS, AURORA_APRESENTADORA } from '../data/assets.js';
+import { COMPARACOES, NOTA_COMPARACAO, FUNDOS, AURORA_POLICIAL } from '../data/assets.js';
 import { INFORMACAO_SEMANAL } from '../data/recadinhos.js';
 import { gerarImagemRecadinho } from '../lib/exportarRecadinho.js';
 
@@ -68,7 +68,7 @@ export default function RecadinhoSemanal({ estado }) {
       informacao,
       imagemObjeto: item.imagem,
       fundo: FUNDOS.principal,
-      aurora: AURORA_APRESENTADORA.src,
+      aurora: AURORA_POLICIAL.retrato.src,
     });
 
   const baixarBlob = (blob) => {
@@ -154,8 +154,8 @@ export default function RecadinhoSemanal({ estado }) {
 
         <img
           className="recadinho-card__aurora"
-          src={AURORA_APRESENTADORA.src}
-          alt={AURORA_APRESENTADORA.alt}
+          src={AURORA_POLICIAL.retrato.src}
+          alt={AURORA_POLICIAL.retrato.alt}
         />
       </article>
 

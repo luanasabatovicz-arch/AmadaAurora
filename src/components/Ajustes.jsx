@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { uid, toIso, formatDate, parseDate } from '../lib/storage.js';
 
-export default function Ajustes({ estado, atualizar }) {
+export default function Ajustes({ estado, atualizar, conta }) {
   const { nomes, dum, descoberta, nascimento, momentos } = estado;
   const [momento, setMomento] = useState('');
   const [dataMomento, setDataMomento] = useState(toIso(new Date()));
@@ -77,6 +77,17 @@ export default function Ajustes({ estado, atualizar }) {
           ))}
         </ul>
       </article>
+
+      {conta && (
+        <article className="card">
+          <p className="eyebrow">Conta e família</p>
+          <p className="pequeno">
+            Os dados são iguais para os dois papais. Para o outro entrar, ele usa o próprio e-mail e digita este código na tela inicial:
+          </p>
+          <p><strong>{conta.codigo}</strong></p>
+          <button className="btn btn--ghost" onClick={conta.sair}>Sair desta conta</button>
+        </article>
+      )}
 
       <article className="card">
         <p className="eyebrow">Backup</p>

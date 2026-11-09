@@ -16,6 +16,8 @@ export const DEFAULT_STATE = {
   recados: {},
   momentos: [],
   marcos: [],
+  // Missões cumpridas por data (ISO): { '2026-11-09': true }
+  missoesFeitas: {},
 };
 
 export function loadState() {

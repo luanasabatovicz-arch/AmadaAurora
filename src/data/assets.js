@@ -10,6 +10,15 @@ export const AURORA_IMG = {
   alt: 'Aurora, em lettering rosa com flores em tons pastel',
 };
 
+// Aurora comandante da casa (arte nova, em public/aurora-policial/).
+export const AURORA_POLICIAL = {
+  retrato: { src: `${BASE}aurora-policial/retrato.webp`, alt: 'Aurora comandante, de boina caqui com distintivo CC' },
+  corpo: { src: `${BASE}aurora-policial/corpo.webp`, alt: 'Aurora comandante de farda caqui, com lupa na mão' },
+  comando: { src: `${BASE}aurora-policial/comando.webp`, alt: 'Aurora comandante com rádio, dando uma ordem' },
+  celebracao: { src: `${BASE}aurora-policial/celebracao.webp`, alt: 'Aurora comandante com medalha, sorrindo de olhos fechados' },
+  missoes: { src: `${BASE}aurora-policial/missoes.webp`, alt: 'Aurora olhando o quadro de missões' },
+};
+
 // Aurora espiando com celular lavanda (fundo transparente): apresentadora do recadinho.
 export const AURORA_APRESENTADORA = {
   src: `${BASE}fundos/aurora-apresentadora.webp`,
