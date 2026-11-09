@@ -4,10 +4,16 @@ import comparacoes from './comparacoes.json';
 
 const BASE = import.meta.env.BASE_URL;
 
-// Arte "Aurora em flores de guache": exibida inteira, sem texto por cima.
-export const AURORA_IMG = {
-  src: `${BASE}fundos/aurora.webp`,
-  alt: 'Aurora, em lettering rosa com flores em tons pastel',
+// Logos do nome AURORA (fundo transparente): faixa larga e versão quadrada.
+export const AURORA_LOGO = {
+  larga: {
+    src: `${BASE}fundos/aurora-logo-larga.webp`,
+    alt: 'Logo AURORA, com boina, laço rosa e estrela dourada',
+  },
+  quadrada: {
+    src: `${BASE}fundos/aurora-logo-quadrada.webp`,
+    alt: 'Logo AURORA, com boina, laço rosa e estrela dourada',
+  },
 };
 
 // Aurora comandante da casa (arte nova, em public/aurora-policial/).

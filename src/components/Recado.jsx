@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { toIso, formatDate, parseDate } from '../lib/storage.js';
 import RecadinhoSemanal from './RecadinhoSemanal.jsx';
-import { AURORA_IMG } from '../data/assets.js';
+import { AURORA_LOGO } from '../data/assets.js';
 import {
   CAMPOS_RECADO,
   montarLinhasRecado,
@@ -74,8 +74,9 @@ export default function Recado({ estado, atualizar }) {
       </form>
 
       <article className="card recado">
+        <img className="recado__logo" src={AURORA_LOGO.larga.src} alt={AURORA_LOGO.larga.alt} />
         <div className="recado__topo">
-          <img className="recado__avatar" src={AURORA_IMG.src} alt="" aria-hidden="true" />
+          <img className="recado__avatar" src={AURORA_LOGO.quadrada.src} alt="" aria-hidden="true" />
           <div>
             <p className="eyebrow">Recado da Aurora</p>
             <p className="pequeno">{formatDate(parseDate(data))}</p>

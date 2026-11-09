@@ -502,11 +502,19 @@
   margin: 0;
 }
 
+.recado__logo {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  margin: 0 auto var(--space-3);
+}
+
 .recado__avatar {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   background: var(--color-surface);
   border: 2px solid var(--color-gold);
