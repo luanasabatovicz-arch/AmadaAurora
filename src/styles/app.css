@@ -662,3 +662,13 @@
   outline: 3px solid var(--color-gold);
   outline-offset: 2px;
 }
+
+/* Capa da coletânea na aba Balada */
+.balada__capa {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin: 0 auto var(--space-4);
+  border-radius: var(--radius-sm);
+}
