@@ -25,12 +25,13 @@ const ABAS = [
 ];
 
 // Fundo de cada tela. Repete só uma vez, no topo, e continua com a cor-base.
+// Início, Semanas, Recadinho e Missões usam só a cor-base creme (--color-bg), sem flores.
 const FUNDO_POR_ABA = {
-  inicio: FUNDOS.principal,
-  semanas: FUNDOS.principal,
+  inicio: null,
+  semanas: null,
   registro: FUNDOS.diario,
-  recado: FUNDOS.principal,
-  missoes: FUNDOS.principal,
+  recado: null,
+  missoes: null,
   balada: FUNDOS.memorias,
   bebe: FUNDOS.celebracao,
   ajustes: null,
