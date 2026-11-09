@@ -7,5 +7,12 @@ import { createClient } from '@supabase/supabase-js';
 const url = import.meta.env.VITE_SUPABASE_URL;
 const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-export const supabase = url && anonKey ? createClient(url, anonKey) : null;
+// Se a URL ou a chave estiverem erradas, o app cai no modo local em vez de ficar em branco.
+let cliente = null;
+try {
+  cliente = url && anonKey ? createClient(url.trim(), anonKey.trim()) : null;
+} catch (erro) {
+  console.error('Supabase não configurado corretamente:', erro);
+}
+export const supabase = cliente;
 export const modoLocal = !supabase;
