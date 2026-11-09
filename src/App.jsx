@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { DEFAULT_STATE, loadState, saveState } from './lib/storage.js';
 import { modoLocal } from './lib/supabase.js';
 import { pegarSessao, ouvirSessao, buscarFamilia, salvarEstado, sair } from './lib/sincronia.js';
-import { FUNDOS } from './data/assets.js';
 import Inicio from './components/Inicio.jsx';
 import Semanas from './components/Semanas.jsx';
 import Registro from './components/Registro.jsx';
@@ -13,29 +12,17 @@ import Balada from './components/Balada.jsx';
 import Ajustes from './components/Ajustes.jsx';
 import Entrar from './components/Entrar.jsx';
 
+// Cada aba tem sua cor: a barrinha de cima usa 'cor' e o texto da aba ativa usa 'texto'.
 const ABAS = [
-  { id: 'inicio', rotulo: 'Início' },
-  { id: 'semanas', rotulo: 'Semanas' },
-  { id: 'registro', rotulo: 'Diário' },
-  { id: 'recado', rotulo: 'Recadinho' },
-  { id: 'missoes', rotulo: 'Missões' },
-  { id: 'balada', rotulo: 'Balada' },
-  { id: 'bebe', rotulo: 'Quartel' },
-  { id: 'ajustes', rotulo: 'Ajustes' },
+  { id: 'inicio', rotulo: 'Início', cor: '#E7899F', texto: '#9E4663' },
+  { id: 'semanas', rotulo: 'Semanas', cor: '#7FBFAE', texto: '#2F6B5E' },
+  { id: 'registro', rotulo: 'Diário', cor: '#9C86C4', texto: '#5E4B7E' },
+  { id: 'recado', rotulo: 'Recadinho', cor: '#E9C44F', texto: '#8A6A12' },
+  { id: 'missoes', rotulo: 'Missões', cor: '#E8836B', texto: '#A8482F' },
+  { id: 'balada', rotulo: 'Balada', cor: '#6FA3C9', texto: '#2E5F82' },
+  { id: 'bebe', rotulo: 'Quartel', cor: '#8FA66A', texto: '#4E6B2A' },
+  { id: 'ajustes', rotulo: 'Ajustes', cor: '#B07AA8', texto: '#7A3E72' },
 ];
-
-// Fundo de cada tela. Repete só uma vez, no topo, e continua com a cor-base.
-// Início, Semanas, Recadinho e Missões usam só a cor-base creme (--color-bg), sem flores.
-const FUNDO_POR_ABA = {
-  inicio: null,
-  semanas: null,
-  registro: FUNDOS.diario,
-  recado: null,
-  missoes: null,
-  balada: FUNDOS.memorias,
-  bebe: FUNDOS.celebracao,
-  ajustes: null,
-};
 
 const MSG_OFFLINE = 'Não consegui sincronizar agora. Os dados ficam neste aparelho e serão enviados depois.';
 
@@ -176,9 +163,6 @@ export default function App() {
       {aviso && <p className="banner banner--alerta">{aviso}</p>}
 
       <main className="tela">
-        {FUNDO_POR_ABA[aba] && (
-          <img className="tela__fundo" src={FUNDO_POR_ABA[aba]} alt="" aria-hidden="true" />
-        )}
         {telas[aba]}
       </main>
 
@@ -187,6 +171,7 @@ export default function App() {
           <button
             key={a.id}
             className={`barra__item ${aba === a.id ? 'barra__item--ativa' : ''}`}
+            style={{ '--aba-cor': a.cor, '--aba-texto': a.texto }}
             onClick={() => setAba(a.id)}
             aria-current={aba === a.id ? 'page' : undefined}
           >

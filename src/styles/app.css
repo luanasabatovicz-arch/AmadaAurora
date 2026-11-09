@@ -16,19 +16,6 @@
   padding: var(--space-5) var(--space-4);
 }
 
-/* Fundo da tela: ocupa a largura, esmaece no rodapé e não bloqueia toques */
-.tela__fundo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  z-index: 0;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
-}
-
 .tela > .pagina {
   position: relative;
   z-index: 1;
@@ -88,8 +75,18 @@
   cursor: pointer;
 }
 
+.barra__item::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 4px;
+  margin: 0 auto 4px;
+  border-radius: 2px;
+  background: var(--aba-cor, var(--color-rose));
+}
+
 .barra__item--ativa {
-  color: var(--color-rose-deep);
+  color: var(--aba-texto, var(--color-rose-deep));
 }
 
 /* Progresso */
