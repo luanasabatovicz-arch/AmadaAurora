@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { imagemParaDataUrl, uid, toIso, formatDate, parseDate } from '../lib/storage.js';
-import { FUNDOS } from '../data/assets.js';
 
 const TIPOS_FOTO = [
   { id: 'barriga', rotulo: 'Barriga' },
@@ -47,10 +46,6 @@ function Fotos({ estado, atualizar }) {
 
   return (
     <>
-      <figure className="capa-memorias">
-        <img src={FUNDOS.memorias} alt="Moldura floral com espaço para as memórias da família" />
-      </figure>
-
       <article className="card">
         <label className="campo">
           Tipo

@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { enviarCodigo, confirmarCodigo, criarFamilia, entrarNaFamilia } from '../lib/sincronia.js';
+import { enviarCodigo, confirmarCodigo, entrarNaFamilia } from '../lib/sincronia.js';
 
-// Tela de entrada: e-mail + código para cada papai e mamãe, depois criar ou entrar na família.
+// Tela de entrada: e-mail + código para cada papai e mamãe, depois entrar na família com o código.
 export default function Entrar({ sessao, aoEntrarNaFamilia }) {
   const [email, setEmail] = useState('');
   const [codigoEnviado, setCodigoEnviado] = useState(false);
@@ -34,12 +34,6 @@ export default function Entrar({ sessao, aoEntrarNaFamilia }) {
     e.preventDefault();
     tentar(() => confirmarCodigo(email, codigo), 'Código incorreto ou vencido. Peça um novo código.');
   };
-
-  const criar = () =>
-    tentar(async () => {
-      await criarFamilia();
-      await aoEntrarNaFamilia();
-    }, 'Não consegui criar a família. Tente de novo.');
 
   const entrar = (e) => {
     e.preventDefault();
@@ -81,26 +75,19 @@ export default function Entrar({ sessao, aoEntrarNaFamilia }) {
     );
   }
 
-  // Com login, mas sem família: criar a família (primeiro papai ou mamãe) ou entrar com o código.
+  // Com login, mas sem família: entrar com o código da família.
   return (
     <section className="pagina">
       <h1>Sua família</h1>
-      <p>Você entrou como {sessao.user.email}. Agora escolha:</p>
-
-      <article className="card">
-        <p className="eyebrow">Primeira vez</p>
-        <p className="pequeno">Use esta opção se ainda ninguém criou a família no app.</p>
-        <button className="btn" onClick={criar} disabled={ocupado}>Criar a família</button>
-      </article>
+      <p>Você entrou como {sessao.user.email}. Digite o código da família para entrar.</p>
 
       <form className="card" onSubmit={entrar}>
-        <p className="eyebrow">Já existe família</p>
-        <p className="pequeno">Peça o código de 8 letras e números ao outro papai ou à outra mamãe, na tela Ajustes.</p>
+        <p className="pequeno">O código de 8 letras e números aparece na tela Ajustes, no app do outro papai ou da outra mamãe.</p>
         <label className="campo">
           Código da família
           <input value={codigoFamilia} onChange={(e) => setCodigoFamilia(e.target.value)} required />
         </label>
-        <button className="btn btn--ghost" type="submit" disabled={ocupado}>Entrar na família</button>
+        <button className="btn" type="submit" disabled={ocupado}>Entrar na família</button>
       </form>
 
       {erro && <p className="pequeno">{erro}</p>}
